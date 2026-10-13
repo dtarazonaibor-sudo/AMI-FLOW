@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "AMI Flow",
+    "slug": "ami-flow",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "icon": "./icon-only.png",
+    "android": {
+      "package": "com.anaibor.amiflow",
+      "adaptiveIcon": {
+        "foregroundImage": "./icon-foreground.png",
+        "backgroundImage": "./icon-background.png"
+      }
+    },
+    "ios": { "bundleIdentifier": "com.anaibor.amiflow" }
+  }
+}
