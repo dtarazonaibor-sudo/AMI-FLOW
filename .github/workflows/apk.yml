@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   push:
     branches: [main, master]
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,7 +18,9 @@ jobs:
       - run: npx expo install react react-native expo-status-bar react-native-safe-area-context @react-native-async-storage/async-storage @react-native-community/datetimepicker expo-clipboard firebase
       - run: npx expo prebuild --platform android --no-install
       - run: cd android && chmod +x gradlew && ./gradlew assembleRelease
-      - uses: actions/upload-artifact@v4
+      - run: cp android/app/build/outputs/apk/release/app-release.apk AMIFlow.apk
+      - uses: softprops/action-gh-release@v2
         with:
-          name: ami-flow-apk
-          path: android/app/build/outputs/apk/release/app-release.apk
+          tag_name: latest
+          name: AMI Flow (última versión)
+          files: AMIFlow.apk
